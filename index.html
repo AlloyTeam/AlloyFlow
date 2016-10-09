@@ -1,0 +1,690 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>AlloyFlow</title>
+    <link rel="stylesheet" href="asset/animate.min.css">
+    <link rel="shortcut icon" href="asset/favicon.ico">
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            font-family: Segoe UI Light,Segoe UI,Microsoft Jhenghei,Mirco Yahei,'sans-serif';
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+            min-width: 1130px;
+        }
+        pre{
+            margin:0;
+            padding:0;
+        }
+        .head {
+            background-color: #263238;
+            height: 50px;
+            line-height: 50px;
+            color: white;
+            text-indent: 30px;
+            font-size: 25px;
+            font-weight: bold;
+        }
+        .icon{
+            display:inline-block;
+            width:21px;
+            position:relative;
+            top:5px;
+            left:-5px;
+        }
+        .panels {
+            font-size:0px;
+            white-space: nowrap;
+            vertical-align:top;
+            height:840px;
+            border-bottom: 1px solid #ccc;
+        }
+        .panel {
+          
+            display: inline-block;
+            font-size: 16px;
+            width: 33.333%;
+            *display: inline;
+            zoom: 1;
+            height:100%;
+           
+        }
+        .panel.br {
+         border-right: 1px solid #ccc;
+        }
+
+            .panel .title {
+                padding-top:10px;
+                text-align:center;
+                  font-size: 20px;
+            }
+             .panel .demo {
+                padding-top:10px;
+                text-align:center;
+                height:200px;
+                border-bottom:1px solid #ccc;
+                overflow:hidden;
+                position:relative;
+            }
+               .panel .code {
+               position:relative;
+            }
+                .panel .code pre {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    margin-top:10px;
+                    margin-left:15px;
+                }
+         .show_box {
+            font-size: 30px;
+               font-weight: bold;
+               padding-top:65px;
+        }
+
+        .box2 span {
+            display: inline-block;
+        }
+
+         .box3 span {
+            display: inline-block;
+        }
+    </style>
+    <style>
+        
+
+.hljs {
+    display: block;
+    overflow-x: auto;
+    font-size:14px;
+    color: #657b83;
+    -webkit-text-size-adjust: none;
+}
+
+.diff .hljs-header, .hljs-comment, .hljs-doctype, .hljs-javadoc, .hljs-pi, .lisp .hljs-string {
+    color: #93a1a1;
+}
+
+.css .hljs-tag, .hljs-addition, .hljs-keyword, .hljs-request, .hljs-status, .hljs-winutils, .method, .nginx .hljs-title {
+    color: #859900;
+}
+
+.hljs-command, .hljs-dartdoc, .hljs-hexcolor, .hljs-link_url, .hljs-number, .hljs-phpdoc, .hljs-regexp, .hljs-rules .hljs-value, .hljs-string, .hljs-tag .hljs-value, .tex .hljs-formula {
+    color: #2aa198;
+}
+
+.css .hljs-function, .hljs-built_in, .hljs-chunk, .hljs-decorator, .hljs-id, .hljs-identifier, .hljs-localvars, .hljs-title, .vhdl .hljs-literal {
+    color: #268bd2;
+}
+
+.hljs-attribute, .hljs-class .hljs-title, .hljs-constant, .hljs-link_reference, .hljs-parent, .hljs-type, .hljs-variable, .lisp .hljs-body, .smalltalk .hljs-number {
+    color: #b58900;
+}
+
+.css .hljs-pseudo, .diff .hljs-change, .hljs-attr_selector, .hljs-cdata, .hljs-header, .hljs-pragma, .hljs-preprocessor, .hljs-preprocessor .hljs-keyword, .hljs-shebang, .hljs-special, .hljs-subst, .hljs-symbol, .hljs-symbol .hljs-string {
+    color: #cb4b16;
+}
+
+.hljs-deletion, .hljs-important {
+    color: #dc322f;
+}
+
+.hljs-link_label {
+    color: #6c71c4;
+}
+
+.tex .hljs-formula {
+    background: #eee8d5;
+}
+
+.panels_sec{
+    font-size:0px;
+    white-space: nowrap;
+    vertical-align:top;
+    height:auto;
+}
+
+.panels_sec .panel{
+    width: 25%;
+}
+.panels_sec .demo {
+    height:640px;
+    text-align: left;
+    text-indent: 10px;
+}
+
+.panels_sec .demo img{
+   width: 100%;
+    display: block;
+}
+        .footer{
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+        }
+
+.panels_third{
+    font-size:0px;
+    white-space: nowrap;
+    vertical-align:top;
+    height:auto;
+}
+
+.panels_third .panel{
+    width: 25%;
+}
+.panels_third .demo {
+    height:330px;
+    text-align: left;
+    text-indent: 10px;
+}
+
+.panels_third .demo img{
+    width: 100%;
+    display: block;
+}
+
+.panels_third h1 {
+    margin: 0;
+    font-size: 30px;
+    line-height: 40px;
+    height: 40px;
+    text-align: center;
+    border-bottom: 1px solid #cccccc;
+}
+        .cn_link{
+            text-decoration: none;
+            position: absolute;
+            right: 240px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+   <a href="https://github.com/AlloyTeam/AlloyFlow"><img style="z-index: 100; position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"></a>
+    <div class="head"><img class="icon" src="asset/alloy_flow.png" alt="" /><span>AlloyFlow－made workflow simple</span>
+        <a class="cn_link" href="index_cn.html">中文官网</a>
+    </div>
+    <div class="panels" id="panels">
+        <div class="panel br">
+            <div class="title">what you see is what you get</div>
+            <div class="demo demo1">
+               <div id="show_box" class="show_box animated">ALLOYFLOW</div> 
+            </div>
+            <div class="code"><pre class="javascript hljs"><code class="js"><span class="hljs-keyword">var</span> alloyFlow = <span class="hljs-keyword">new</span> AlloyFlow({
+    workflow: [
+        {
+            work: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+                addClass(show_box, <span class="hljs-string">"flash"</span>);
+            },
+            start: <span class="hljs-number">0</span>
+        },{
+            work: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+                removeClass(show_box, <span class="hljs-string">"flash"</span>);
+                addClass(show_box, <span class="hljs-string">"rubberBand"</span>);
+            },
+            start: <span class="hljs-number">1500</span>
+        },{
+            work: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+                removeClass(show_box, <span class="hljs-string">"rubberBand"</span>);
+                addClass(show_box, <span class="hljs-string">"flipOutY"</span>);
+            },
+            start: <span class="hljs-number">3000</span>
+        },{
+            work: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+                removeClass(show_box, <span class="hljs-string">"flipOutY"</span>);
+                addClass(show_box, <span class="hljs-string">"bounceIn"</span>);
+            },
+            start: <span class="hljs-number">4500</span>
+        },{
+            work: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+                removeClass(show_box, <span class="hljs-string">"bounceIn"</span>);
+                alloyFlow.start();
+            },
+            start: <span class="hljs-number">6000</span>
+        }
+    ]
+});
+
+alloyFlow.start();
+</code></pre></div>
+        </div>
+        <div class="panel br">
+              <div class="title animated" id="title">flow controller</div>
+            <div class="demo">
+                <div id="box2" class="show_box animated box2">
+                   <span>A</span><span>L</span><span>L</span><span>O</span><span>Y</span><span>F</span><span>L</span><span>O</span><span>W</span>
+                </div>
+            </div>
+            <div class="code"><pre class="javascript hljs"><code class="js"><span class="hljs-keyword">var</span> alloyFlow = <span class="hljs-keyword">new</span> AlloyFlow({
+    workflow: [
+        {
+            work: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+                explode();
+            },
+            start: [<span class="hljs-number">0</span>, <span class="hljs-number">2000</span>, <span class="hljs-number">4000</span>, <span class="hljs-number">6000</span>]
+        },{
+            work: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+                addClass(title, <span class="hljs-string">"swing"</span>);
+            },
+            start: <span class="hljs-number">8000</span>
+        },{
+            work: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+                removeClass(title, <span class="hljs-string">"swing"</span>);
+                alloyFlow.start();
+            },
+            start: <span class="hljs-number">10000</span>
+        }
+    ]
+});
+
+alloyFlow.start();
+</code></pre></div>
+        </div>
+        <div class="panel">
+             <div class="title">good at asynchronous workflow</div>
+            <div class="demo">
+                <div id="box3" class="show_box box3">
+                   <span>ALLOY</span><span>FLOW</span>
+                </div>
+            </div>
+            <div class="code"><pre class="javascript hljs"><code class="js"> <span class="hljs-keyword">var</span> alloyFlow = <span class="hljs-keyword">new</span> AlloyFlow({
+    workflow: [
+        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+            <span class="hljs-keyword">new</span> To(alloy, <span class="hljs-string">"scaleX"</span>, <span class="hljs-number">1</span>, <span class="hljs-number">400</span>);
+            <span class="hljs-keyword">new</span> To(alloy, <span class="hljs-string">"scaleY"</span>, <span class="hljs-number">1</span>, <span class="hljs-number">400</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+                alloyFlow3.next("msg");
+            });
+        },
+        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(msg)</span> </span>{
+            <span class="hljs-keyword">new</span> To(flow, <span class="hljs-string">"scaleX"</span>, <span class="hljs-number">1</span>, <span class="hljs-number">400</span>);
+            <span class="hljs-keyword">new</span> To(flow, <span class="hljs-string">"scaleY"</span>, <span class="hljs-number">1</span>, <span class="hljs-number">400</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+                alloyFlow3.next("msg", <span class="hljs-number">2000</span>);
+            });
+        },
+        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(msg)</span> </span>{
+            <span class="hljs-keyword">new</span> To(alloy, <span class="hljs-string">"scaleX"</span>, <span class="hljs-number">0</span>, <span class="hljs-number">400</span>);
+            <span class="hljs-keyword">new</span> To(alloy, <span class="hljs-string">"scaleY"</span>, <span class="hljs-number">0</span>, <span class="hljs-number">400</span>);
+            <span class="hljs-keyword">new</span> To(flow, <span class="hljs-string">"scaleX"</span>, <span class="hljs-number">0</span>, <span class="hljs-number">400</span>);
+            <span class="hljs-keyword">new</span> To(flow, <span class="hljs-string">"scaleY"</span>, <span class="hljs-number">0</span>, <span class="hljs-number">400</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(msg)</span> </span>{
+                alloyFlow3.next("msg", <span class="hljs-number">2000</span>);
+            });
+        },
+        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(msg)</span> </span>{
+            alloyFlow.start();
+        }
+    ]
+});
+
+alloyFlow.start();
+</code></pre></div>
+        </div>
+    </div>
+<div class="panels_sec">
+    <div class="panel br">
+        <div class="title">magician with transition</div>
+        <div class="demo demo5">
+            　<img src="asset/case1.gif">
+        </div>
+        <div class="code"></div>
+    </div>
+    <div class="panel br">
+        <div class="title">parallel with ease</div>
+        <div class="demo demo4"><pre class="javascript hljs"><code class="js"><span class="hljs-keyword">var</span> alloyFlow = <span class="hljs-keyword">new</span> AlloyFlow({
+    workflow: [
+        {
+            work: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+                dosomething1();
+            },
+            start: <span class="hljs-number">0</span>
+        },{
+            work: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+                dosomething2();
+            },
+            start: <span class="hljs-number">0</span>
+        },{
+            work: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+                dosomething3();
+            },
+            start: <span class="hljs-number">1000</span>
+        },{
+            work: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+                dosomething4();
+            },
+            start: <span class="hljs-number">1000</span>
+        }
+     ]
+  });
+
+ alloyFlow.start();
+</code></pre></div>
+        <div class="code"></div>
+    </div>
+    <div class="panel br">
+        <div class="title">perfection in series</div>
+        <div class="demo demo4"><pre class="javascript hljs"><code class="js"><span class="hljs-keyword">var</span> alloyFlow = <span class="hljs-keyword">new</span> AlloyFlow({
+    workflow: [
+        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+            ajax(<span class="hljs-string">"xx.php"</span>,<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(result)</span></span>{
+                alloyFlow.next(result);
+            });
+        },
+        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(result)</span> </span>{
+            <span class="hljs-keyword">var</span> data = process(result);
+            alloyFlow.next(data);
+        },
+        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(data)</span> </span>{
+            <span class="hljs-keyword">var</span> html = toHTML(data, tpl);
+            alloyFlow.next(html);
+        },
+        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(html)</span> </span>{
+            renderTo(html, parent);
+        }
+  ]});
+
+  alloyFlow.start();
+</code></pre>
+</div>
+        <div class="code"></div>
+    </div>
+    <div class="panel">
+        <div class="title">amazing effect</div>
+        <div class="demo demo6">
+            　　<img src="asset/case2.gif">
+        </div>
+        <div class="code"></div>
+    </div>
+</div>
+
+   <div class="panels_third">
+       <h1>API</h1>
+       <div class="panel br">
+           <div class="title">flow of time</div>
+           <div class="demo demo5">
+               <pre class="javascript hljs"><code class="js"><span class="hljs-keyword">var</span> alloyFlow = <span class="hljs-keyword">new</span> AlloyFlow({
+    workflow: [
+        {
+            work: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{ },
+            start: <span class="hljs-number">0</span>
+        },{
+            work: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{ },
+            start: <span class="hljs-number">1500</span>
+        },{
+            work: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{ },
+            start: [<span class="hljs-number">720</span>, <span class="hljs-number">1000</span>, <span class="hljs-number">400</span>, <span class="hljs-number">6000</span>]
+        }
+    ],
+   onStart: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{ },
+   onProgress: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{ },
+   onEnd: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{ }
+  });
+
+  alloyFlow.start();
+</code></pre>
+           </div>
+           <div class="code"></div>
+       </div>
+       <div class="panel br">
+           <div class="title">flow of task</div>
+           <div class="demo demo4">
+		   <pre class="javascript hljs"><code class="js"> <span class="hljs-keyword">var</span> alloyFlow = <span class="hljs-keyword">new</span> AlloyFlow({
+    workflow: [
+        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+            alloyFlow3.next("msg");
+        },
+        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(msg)</span> </span>{
+            alloyFlow3.next("msg", <span class="hljs-number">2000</span>);
+        },
+        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(msg)</span> </span>{
+            
+        }
+    ]
+  });
+
+  alloyFlow.start();
+</code></pre>
+		   </div>
+           <div class="code"></div>
+       </div>
+       <div class="panel br">
+           <div class="title">start method</div>
+           <div class="demo demo4"> <pre class="javascript hljs"><code class="js"> <span class="hljs-keyword">var</span> alloyFlow = <span class="hljs-keyword">new</span> AlloyFlow({
+    workflow: [
+        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+            
+        },
+        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(msg)</span> </span>{
+            <span class="hljs-comment">//restart</span>
+            alloyFlow.start();
+        }
+    ]
+  });
+  <span class="hljs-comment">//start</span>
+  alloyFlow.start();
+</code></pre>
+           </div>
+           <div class="code"></div>
+       </div>
+       <div class="panel">
+           <div class="title">next method</div>
+           <div class="demo demo6">
+             <pre class="javascript hljs"><code class="js"> <span class="hljs-keyword">var</span> alloyFlow = <span class="hljs-keyword">new</span> AlloyFlow({
+    workflow: [
+        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+            <span class="hljs-comment">//exec the next function</span>
+            alloyFlow3.next("msg");
+        },
+        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(msg)</span> </span>{
+            <span class="hljs-comment">//exec the next function after 2000ms</span>
+            alloyFlow3.next("msg", <span class="hljs-number">2000</span>);
+        },
+        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(msg)</span> </span>{
+            
+        }
+    ]
+  });
+
+  alloyFlow.start();
+</code></pre>
+           </div>
+           <div class="code"></div>
+       </div>
+   </div>
+
+   <div class="footer">© 2015–2016 Tencent AlloyTeam</div>
+    <script src="alloy_flow.js"></script>
+    <script src="asset/transform.js"></script>
+    <script src="asset/to.js"></script>
+    <script>
+        ; (function () {
+            function hasClass(obj, cls) {
+                return obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));
+            }
+
+            function addClass(obj, cls) {
+                if (!hasClass(obj, cls)) obj.className += " " + cls;
+            }
+
+            function removeClass(obj, cls) {
+                if (hasClass(obj, cls)) {
+                    var reg = new RegExp('(\\s|^)' + cls + '(\\s|$)');
+                    obj.className = obj.className.replace(reg, ' ');
+                }
+            }
+
+            function getViewport() {
+                var d = document.documentElement,
+                    b = document.body,
+                    w = window,
+                    div = document.createElement("div");
+                div.innerHTML = "  <div></div>";
+                var lt = !(div.firstChild.nodeType === 3) ?
+                    { left: b.scrollLeft || d.scrollLeft, top: b.scrollTop || d.scrollTop } :
+                    { left: w.pageXOffset, top: w.pageYOffset };
+                var wh = w.innerWidth ?
+                    { width: w.innerWidth, height: w.innerHeight } :
+                        (d && d.clientWidth && d.clientWidth != 0 ?
+                        { width: d.clientWidth, height: d.clientHeight } :
+                        { width: b.clientWidth, height: b.clientHeight });
+
+                return [lt.left, lt.top, wh.width, wh.height]
+            };
+            var vp = getViewport();
+            var panels = document.getElementById("panels");
+           // panels.style.height = (vp[3] - 50) + "px";
+
+            var show_box = document.getElementById("show_box");
+
+            var alloyFlow = new AlloyFlow({
+                workflow: [
+                    {
+                        work: function () {
+                            addClass(show_box, "flash");
+                        },
+                        start: 0
+                    }, {
+                        work: function () {
+                            removeClass(show_box, "flash");
+                            addClass(show_box, "rubberBand");
+                        },
+                        start: 1500
+                    },
+                    {
+                        work: function () {
+                            removeClass(show_box, "rubberBand");
+                            addClass(show_box, "flipOutY");
+                        },
+                        start: 3000
+                    },
+                    {
+                        work: function () {
+                            removeClass(show_box, "flipOutY");
+                            addClass(show_box, "bounceIn");
+                        },
+                        start: 4500
+                    },
+                    {
+                        work: function () {
+                            removeClass(show_box, "bounceIn");
+
+                            alloyFlow.start();
+                        },
+                        start: 6000
+                    }
+                ]
+            });
+
+            alloyFlow.start();
+
+            var wording = [], box = document.getElementById("box2");;
+            var explodeInterval = setInterval(function () {
+                var i = 0, len = wording.length;
+                for (; i < len; i++) {
+                    var word = wording[i];
+                    word.speedY += 0.02;
+                    word.translateX += word.speedX;
+                    word.translateY += word.speedY;
+                    word.rotateZ += word.av;
+                    word.alpha -= 0.01;
+                    word.style.opacity = word.alpha;
+                    word.scaleY += word.ss;
+                    word.scaleX += word.ss;
+
+
+                }
+            }, 15);
+
+            function explode() {
+
+                box.innerHTML = "<span>A</span><span>L</span><span>L</span><span>O</span><span>Y</span><span>F</span><span>L</span><span>O</span><span>W</span>";
+                wording = box.querySelectorAll("span");
+
+                var i = 0;
+                len = wording.length;
+                for (; i < len; i++) {
+                    var word = wording[i];
+                    Transform(word);
+                    word.speedX = Math.random() * 6 - 3;
+                    word.speedY = Math.random() * -5;
+                    word.av = Math.random() * -10;
+                    word.alpha = 1;
+                    word.ss = (Math.random() - 0.5) / 20;
+                }
+
+
+            }
+
+            var title = document.getElementById("title");
+
+            var alloyFlow2 = new AlloyFlow({
+                workflow: [
+                    {
+                        work: function () {
+                            explode();
+                        },
+                        start: [0, 2000, 4000, 6000]
+                    },{
+                         work: function () {
+                             addClass(title, "swing");
+                         },
+                         start: 8000
+                     },{
+                        work: function () {
+                            removeClass(title, "swing");
+                            alloyFlow2.start();
+                        },
+                        start: 10000
+                    }
+                ]
+            });
+
+            alloyFlow2.start();
+
+
+            var box3Wording = document.querySelectorAll("#box3 span");
+            var alloy = box3Wording[0];
+            var flow = box3Wording[1];
+            Transform(alloy);
+            Transform(flow);
+            alloy.scaleX = alloy.scaleY = 0;
+            flow.scaleX = flow.scaleY = 0;
+
+            var alloyFlow3 = new AlloyFlow({
+                workflow: [
+                    function () {
+                        new To(alloy, "scaleX", 1, 400);
+                        new To(alloy, "scaleY", 1, 400, function () {
+                            alloyFlow3.next("msg");
+                        });
+                    },
+                    function (msg) {
+                        new To(flow, "scaleX", 1, 400);
+                        new To(flow, "scaleY", 1, 400, function () {
+                            alloyFlow3.next("msg",2000);
+                        });
+                    },
+                    function (msg) {
+                        new To(alloy, "scaleX", 0, 400);
+                        new To(alloy, "scaleY", 0, 400);
+                        new To(flow, "scaleX", 0, 400);
+                        new To(flow, "scaleY", 0, 400, function () {
+                            alloyFlow3.next("msg",2000);
+                        });
+                    },
+                    function (msg) {
+                        alloyFlow3.start();
+                    }
+                ]
+            });
+
+            alloyFlow3.start();
+
+
+        })();
+        
+    </script>
+</body>
+</html>

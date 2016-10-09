@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <script src="../alloy_flow.js"></script>
+    <script>
+        var af = new AlloyFlow({
+            workflow: [
+                   function () {
+                       setTimeout(function () {
+                           console.log(11);
+                           af.next(22);
+                       },5000)
+                   },
+                   function (msg) {
+                       console.log(msg);
+                       af.next(33);
+                   },
+                   function (msg) {
+                       console.log(msg);
+                       console.log(44);
+                   }
+
+            ],
+            onStart: function () {
+            },
+            onProgress: function () { },
+            onEnd: function () { console.log("end") },
+        })
+
+        af.start();
+
+        new AlloyFlow({
+            workflow: [
+                 {
+                     work: function () {
+                         console.log(1);
+                     },
+                     start: 10
+                 },
+                {
+                    work: function () {
+                        console.log(2);
+                    },
+                    start: [0, 50, 100, 150, 200]
+                },
+                {
+                    work: function () {
+                        console.log(5);
+                    },
+                    start: [0, 50, 100, 150, 200]
+                },
+                {
+                    work: function () {
+                        console.log(3);
+                    },
+                    start: 100
+                }
+            ]
+        }).start();
+    </script>
+</body>
+</html>

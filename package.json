@@ -1,0 +1,25 @@
+{
+  "name": "alloyflow",
+  "version": "0.1.0",
+  "description": "made workflow simple",
+  "main": "alloy_flow.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlloyTeam/AlloyFlow.git"
+  },
+  "keywords": [
+    "workflow",
+    "async",
+    "task",
+    "flow"
+  ],
+  "author": "dntzhang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AlloyTeam/AlloyFlow/issues"
+  },
+  "homepage": "https://github.com/AlloyTeam/AlloyFlow#readme"
+}
