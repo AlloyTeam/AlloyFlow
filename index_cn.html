@@ -296,13 +296,13 @@ alloyFlow.start();
         <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
             <span class="hljs-keyword">new</span> To(alloy, <span class="hljs-string">"scaleX"</span>, <span class="hljs-number">1</span>, <span class="hljs-number">400</span>);
             <span class="hljs-keyword">new</span> To(alloy, <span class="hljs-string">"scaleY"</span>, <span class="hljs-number">1</span>, <span class="hljs-number">400</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
-                alloyFlow3.next("msg");
+                alloyFlow.next("msg");
             });
         },
         <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(msg)</span> </span>{
             <span class="hljs-keyword">new</span> To(flow, <span class="hljs-string">"scaleX"</span>, <span class="hljs-number">1</span>, <span class="hljs-number">400</span>);
             <span class="hljs-keyword">new</span> To(flow, <span class="hljs-string">"scaleY"</span>, <span class="hljs-number">1</span>, <span class="hljs-number">400</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
-                alloyFlow3.next("msg", <span class="hljs-number">2000</span>);
+                alloyFlow.next("msg", <span class="hljs-number">2000</span>);
             });
         },
         <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(msg)</span> </span>{
@@ -310,7 +310,7 @@ alloyFlow.start();
             <span class="hljs-keyword">new</span> To(alloy, <span class="hljs-string">"scaleY"</span>, <span class="hljs-number">0</span>, <span class="hljs-number">400</span>);
             <span class="hljs-keyword">new</span> To(flow, <span class="hljs-string">"scaleX"</span>, <span class="hljs-number">0</span>, <span class="hljs-number">400</span>);
             <span class="hljs-keyword">new</span> To(flow, <span class="hljs-string">"scaleY"</span>, <span class="hljs-number">0</span>, <span class="hljs-number">400</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(msg)</span> </span>{
-                alloyFlow3.next("msg", <span class="hljs-number">2000</span>);
+                alloyFlow.next("msg", <span class="hljs-number">2000</span>);
             });
         },
         <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(msg)</span> </span>{
@@ -433,10 +433,10 @@ alloyFlow.start();
 		   <pre class="javascript hljs"><code class="js"> <span class="hljs-keyword">var</span> alloyFlow = <span class="hljs-keyword">new</span> AlloyFlow({
     workflow: [
         <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
-            alloyFlow3.next("msg");
+            alloyFlow.next("msg");
         },
         <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(msg)</span> </span>{
-            alloyFlow3.next("msg", <span class="hljs-number">2000</span>);
+            alloyFlow.next("msg", <span class="hljs-number">2000</span>);
         },
         <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(msg)</span> </span>{
             
@@ -475,11 +475,11 @@ alloyFlow.start();
     workflow: [
         <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
             <span class="hljs-comment">//执行下一个函数</span>
-            alloyFlow3.next("msg");
+            alloyFlow.next("msg");
         },
         <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(msg)</span> </span>{
             <span class="hljs-comment">//2000ms后执行下一个函数</span>
-            alloyFlow3.next("msg", <span class="hljs-number">2000</span>);
+            alloyFlow.next("msg", <span class="hljs-number">2000</span>);
         },
         <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(msg)</span> </span>{
             
