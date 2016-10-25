@@ -30,10 +30,10 @@ flow of task
  var alloyFlow = new AlloyFlow({
     workflow: [
         function () {
-            alloyFlow3.next("msg");
+            alloyFlow.next("msg");
         },
         function (msg) {
-            alloyFlow3.next("msg", 2000);
+            alloyFlow.next("msg", 2000);
         },
         function (msg) {
             
