@@ -445,11 +445,12 @@ alloyFlow.start();
            <div class="code"></div>
        </div>
        <div class="panel br">
-           <div class="title">start 方法</div>
+           <div class="title">[start|stop] 方法</div>
            <div class="demo demo4"> <pre class="javascript hljs"><code class="js"> <span class="hljs-keyword">var</span> alloyFlow = <span class="hljs-keyword">new</span> AlloyFlow({
     workflow: [
         <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
-            
+            <span class="hljs-comment">//stop</span>
+            <span class="hljs-comment">//alloyFlow.stop();</span>
         },
         <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(msg)</span> </span>{
             <span class="hljs-comment">//重新开始</span>
@@ -464,25 +465,25 @@ alloyFlow.start();
            <div class="code"></div>
        </div>
        <div class="panel">
-           <div class="title">next 方法</div>
+           <div class="title">[next|callback] 方法</div>
            <div class="demo demo6">
              <pre class="javascript hljs"><code class="js"> <span class="hljs-keyword">var</span> alloyFlow = <span class="hljs-keyword">new</span> AlloyFlow({
     workflow: [
         <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
             <span class="hljs-comment">//执行下一个函数</span>
-            alloyFlow.next("msg");
+            this.next("msg");
+            <span class="hljs-comment">//or exec the callback function</span>
+            <span class="hljs-comment">//this.callback("msg" , "msg2");</span>
         },
         <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(msg)</span> </span>{
             <span class="hljs-comment">//2000ms后执行下一个函数</span>
-            alloyFlow.next("msg", <span class="hljs-number">2000</span>);
+            this.next("msg", <span class="hljs-number">2000</span>);
         },
         <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(msg)</span> </span>{
             
         }
     ]
-  });
-
-  alloyFlow.start();
+  }).start();
 </code></pre>
            </div>
            <div class="code"></div>
