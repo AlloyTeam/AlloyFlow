@@ -9,17 +9,18 @@
         var af = new AlloyFlow({
             workflow: [
                    function () {
+					   var self = this;
                        setTimeout(function () {
                            console.log(11);
-                           af.next(22);
-                       },5000)
+                           self.next(22);
+                       },2000)
                    },
                    function (msg) {
                        console.log(msg);
-                       af.next(33);
+                       this.callback(33,44);
                    },
-                   function (msg) {
-                       console.log(msg);
+                   function (msg,msg2) {
+                       console.log(msg+"__"+msg2);
                        console.log(44);
                    }
 
@@ -28,9 +29,7 @@
             },
             onProgress: function () { },
             onEnd: function () { console.log("end") },
-        })
-
-        af.start();
+        }).start()
 
         new AlloyFlow({
             workflow: [

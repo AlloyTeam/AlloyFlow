@@ -68,7 +68,7 @@ AlloyFlow.prototype = {
                 if (currentTime >= w.start) {
                     if (!w.done) {
                         w.done = true;                 
-                        w.work(currentTime);
+                        w.work.call(self,currentTime);
                         self.onProgress();
                        
                     } else {
@@ -84,7 +84,7 @@ AlloyFlow.prototype = {
         }, this.interval);
     },
     _startSeries: function () {
-        this.workflow[this.workIndex]();
+        this.workflow[this.workIndex].call(this);
     },
     _forEach: function (arr,callback) {
         if (Array.prototype.forEach) return arr.forEach(callback);
@@ -111,10 +111,14 @@ AlloyFlow.prototype = {
             this._nextTask(msg);
         }
     },
-    _nextTask:function(msg){
+	callback: function (){
+		console.log(arguments)
+		this._nextTask.apply(this,arguments);
+	},
+    _nextTask:function(){
         if (this.stopSeries) return;   
         this.workIndex++;
-        this.workflow[this.workIndex](msg);
+        this.workflow[this.workIndex].apply(this,arguments);
         this.onProgress();
         if (this.workIndex === this.wf_len - 1) {
             this.workIndex = 0;
