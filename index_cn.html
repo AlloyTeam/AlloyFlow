@@ -242,15 +242,12 @@
         },{
             work: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
                 removeClass(show_box, <span class="hljs-string">"bounceIn"</span>);
-                alloyFlow.start();
+                this.start();
             },
             start: <span class="hljs-number">6000</span>
         }
     ]
-});
-
-alloyFlow.start();
-</code></pre></div>
+}).start();</code></pre></div>
         </div>
         <div class="panel br">
               <div class="title animated" id="title">流程控制专家</div>
@@ -274,14 +271,12 @@ alloyFlow.start();
         },{
             work: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
                 removeClass(title, <span class="hljs-string">"swing"</span>);
-                alloyFlow.start();
+                this.start();
             },
             start: <span class="hljs-number">10000</span>
         }
     ]
-});
-
-alloyFlow.start();
+}).start();
 </code></pre></div>
         </div>
         <div class="panel">
@@ -499,7 +494,7 @@ alloyFlow.start();
     <script src="asset/transform.js"></script>
     <script src="asset/to.js"></script>
     <script>
-        ; (function () {
+           ; (function () {
             function hasClass(obj, cls) {
                 return obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));
             }
@@ -570,14 +565,13 @@ alloyFlow.start();
                         work: function () {
                             removeClass(show_box, "bounceIn");
 
-                            alloyFlow.start();
+                            this.start();
                         },
                         start: 6000
                     }
                 ]
-            });
+            }).start();
 
-            alloyFlow.start();
 
             var wording = [], box = document.getElementById("box2");;
             var explodeInterval = setInterval(function () {
@@ -619,7 +613,7 @@ alloyFlow.start();
 
             var title = document.getElementById("title");
 
-            var alloyFlow2 = new AlloyFlow({
+            new AlloyFlow({
                 workflow: [
                     {
                         work: function () {
@@ -634,15 +628,12 @@ alloyFlow.start();
                      },{
                         work: function () {
                             removeClass(title, "swing");
-                            alloyFlow2.start();
+                            this.start();
                         },
                         start: 10000
                     }
                 ]
-            });
-
-            alloyFlow2.start();
-
+            }).start();
 
             var box3Wording = document.querySelectorAll("#box3 span");
             var alloy = box3Wording[0];
@@ -657,30 +648,28 @@ alloyFlow.start();
                     function () {
                         new To(alloy, "scaleX", 1, 400);
                         new To(alloy, "scaleY", 1, 400, function () {
-                            alloyFlow3.next("msg");
-                        });
+                            this.next("msg");
+                        }.bind(this));
                     },
                     function (msg) {
                         new To(flow, "scaleX", 1, 400);
                         new To(flow, "scaleY", 1, 400, function () {
-                            alloyFlow3.next("msg",2000);
-                        });
+                            this.next("msg",2000);
+                        }.bind(this));
                     },
                     function (msg) {
                         new To(alloy, "scaleX", 0, 400);
                         new To(alloy, "scaleY", 0, 400);
                         new To(flow, "scaleX", 0, 400);
                         new To(flow, "scaleY", 0, 400, function () {
-                            alloyFlow3.next("msg",2000);
-                        });
+                            this.next("msg",2000);
+                        }.bind(this));
                     },
                     function (msg) {
-                        alloyFlow3.start();
+                        this.start();
                     }
                 ]
-            });
-
-            alloyFlow3.start();
+            }).start();
 
 
         })();
