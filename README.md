@@ -43,6 +43,10 @@ flow of task
 
 alloyFlow.start();
 ```
+
+# Many thanks to 
+[transformjs](http://alloyteam.github.io/AlloyTouch/transformjs/)
+
 # Who is using AlloyFlow?
 
 ![preview](http://sqimg.qq.com/qq_product_operations/im/qqlogo/imlogo.png)
