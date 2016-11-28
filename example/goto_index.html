@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script src="../alloy_flow.js"></script>
+    <script>
+        var af = new AlloyFlow({
+            workflow: [
+                function () {
+                    var self = this;
+                    setTimeout(function () {
+                        console.log(11);
+                        self.next(22);
+                    },2000)
+                },
+                function () {
+                    var self = this;
+                    setTimeout(function () {
+                        console.log(33);
+                       // self.next(44);
+
+                        self.gotoIndex(0)
+                    },2000)
+                },
+                function (msg) {
+                    console.log(msg);
+                    this.callback(55,66);
+                },
+                function (msg,msg2) {
+                    console.log(msg+"__"+msg2);
+                    console.log(44);
+                }
+
+            ],
+            onStart: function () {
+            },
+            onProgress: function () { },
+            onEnd: function () { console.log("end") }
+        }).start()
+    </script>
+</body>
+</html>

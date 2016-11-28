@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+<script src="../alloy_flow.js"></script>
+<script>
+
+    var aa=    new AlloyFlow({
+        workflow: [
+            {
+                work: function () {
+                    console.log(10);
+                },
+                start: 10
+            },
+            {
+                work: function () {
+                    console.log(200);
+                },
+                start: 200
+            },
+            {
+                work: function () {
+                    this.gotoTime(100)
+                },
+                start: 800
+            }
+        ]
+    });
+
+    aa.start();
+</script>
+</body>
+</html>

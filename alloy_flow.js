@@ -1,4 +1,4 @@
-﻿/* AlloyFlow 0.1.0
+﻿/* AlloyFlow 0.1.1
  * By AlloyTeam
  * https://github.com/AlloyTeam/AlloyFlow
  */
@@ -40,6 +40,11 @@ var AlloyFlow = function (option) {
                
             }
         }
+
+        this.workflow.sort(function(a,b){
+            return a.start - b.start;
+        });
+        this.maxTime = this.workflow[this.wf_len-1].start;
     }
 };
 
@@ -60,9 +65,6 @@ AlloyFlow.prototype = {
         this.start_time = new Date();
         clearInterval(this.timer);
         this.timer = setInterval(function () {
-      
-            var doneCount = 0;
-            
             self._forEach(self.workflow, function (w) {
                 var currentTime = new Date() - self.start_time ;
                 if (currentTime >= w.start) {
@@ -72,9 +74,7 @@ AlloyFlow.prototype = {
                         self.onProgress();
                        
                     } else {
-                        doneCount++;
-                        if (doneCount === self.wf_len) {
-                         
+                        if (currentTime >self.maxTime+self.interval+self.interval ) {
                             clearInterval(self.timer);
                             self.onEnd();
                         }
@@ -101,6 +101,25 @@ AlloyFlow.prototype = {
             clearInterval(this.timer);
         }
     },
+    gotoTime:function(time) {
+        this.start_time = new Date(new Date().getTime() - time);
+        this._forEach(this.workflow, function (item) {
+            if (item.start > time) {
+                item.done = false;
+            }
+        });
+    },
+    gotoIndex:function(index) {
+        this.workIndex = index;
+        if (this.stopSeries) return;
+        this.workflow[this.workIndex].apply(this,arguments);
+        this.onProgress();
+        if (this.workIndex === this.wf_len - 1) {
+            this.workIndex = 0;
+            this.stopSeries = true;
+            this.onEnd();
+        }
+    },
     next: function (msg , delay) {
         if(arguments.length === 2){
             var self = this;
@@ -112,7 +131,6 @@ AlloyFlow.prototype = {
         }
     },
 	callback: function (){
-		console.log(arguments)
 		this._nextTask.apply(this,arguments);
 	},
     _nextTask:function(){
